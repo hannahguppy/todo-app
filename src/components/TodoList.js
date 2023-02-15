@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux'
 
 const TodoList = ({clickHandler, deleteHandler}) => {
-  const todos = useSelector(state => state.todo.showedTodos)
+
+  const todos = useSelector(state => state.filter)
 
   return (
     <div>

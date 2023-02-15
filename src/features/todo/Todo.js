@@ -1,13 +1,14 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import TodoList from '../../components/TodoList'
-import { 
-  addTodo, removeTodo, checkTodo,
-  filterNone, filterCompleted, filterIncompleted  
-} from './todoSlice'
+import { addTodo, removeTodo, checkTodo } from './todoSlice'
+import Filter from '../filter/Filter'
+import { filterNone } from '../filter/filterSlice'
 
 const Todo = () => {
   const dispatch = useDispatch()
+  const todos = useSelector(state => state.todo)
+  dispatch(filterNone(todos)) // to subcribe filter to todo
 
   const handleAdd = e => {
     e.preventDefault()
@@ -28,21 +29,6 @@ const Todo = () => {
     dispatch(removeTodo(todo))
   }
 
-  const handleFilterNone = e => {
-    e.preventDefault()
-    dispatch(filterNone())
-  }
-
-  const handleFilterCompleted = e => {
-    e.preventDefault()
-    dispatch(filterCompleted())
-  }
-
-  const handleFilterIncompleted = e => {
-    e.preventDefault()
-    dispatch(filterIncompleted())
-  }
-
   return(
     <div>
       <form name='addTodoForm' id='addTodoForm' onSubmit={handleAdd}>
@@ -61,26 +47,7 @@ const Todo = () => {
         </button>
       </form>
 
-      <div>
-        <button 
-          type="submit" 
-          className="btn btn-sm btn-primary"
-          onClick={handleFilterNone}>
-          All
-        </button>        
-        <button 
-          type="submit" 
-          className="btn btn-sm btn-primary"
-          onClick={handleFilterCompleted}>
-          Completed
-        </button>        
-        <button 
-          type="submit" 
-          className="btn btn-sm btn-primary"
-          onClick={handleFilterIncompleted}>
-          Incompleted
-        </button>        
-      </div>
+      <Filter />
 
       <TodoList 
         clickHandler={handleClick}
