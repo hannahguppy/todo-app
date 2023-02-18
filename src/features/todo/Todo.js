@@ -42,7 +42,7 @@ const Todo = () => {
         </div>
         <button 
           type="submit" 
-          className="btn btn-sm">
+          className="btn btn-sm btn-danger">
             Add Todo
         </button>
       </form>

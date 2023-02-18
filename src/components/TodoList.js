@@ -24,7 +24,10 @@ const TodoList = ({clickHandler, deleteHandler}) => {
               <td>{todo.note}</td>
               <td>
                 <input 
-                type="checkbox" name="checkComplete" id="checkComplete" 
+                type="checkbox" 
+                name="checkComplete" 
+                id="checkComplete" 
+                value={todo.isCompleted? 'on' : ''}
                 onClick={() => clickHandler(todo)} />
               </td>
               <td>
