@@ -19,22 +19,22 @@ const Filter = () => {
   }
 
   return (    
-    <div>
+    <div className='filter-button-bar'>
       <button 
         type="reset" 
-        className="btn btn-sm btn-primary"
+        className="filter-btn"
         onClick={() => handleFilterNone(todos)}>
         All
       </button>        
       <button 
         type="submit" 
-        className="btn btn-sm btn-primary"
+        className="filter-btn"
         onClick={() => handleFilterCompleted(todos)}>
         Completed
       </button>        
       <button 
         type="submit" 
-        className="btn btn-sm btn-primary"
+        className="filter-btn"
         onClick={() => handleFilterIncompleted(todos)}>
         Incompleted
       </button>        

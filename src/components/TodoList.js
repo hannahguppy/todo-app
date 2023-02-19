@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux'
 
 const TodoList = ({clickHandler, deleteHandler}) => {
-
   const todos = useSelector(state => state.filter)
 
   return (
@@ -23,19 +22,23 @@ const TodoList = ({clickHandler, deleteHandler}) => {
               <td>{todo.name}</td>
               <td>{todo.note}</td>
               <td>
-                <input 
-                type="checkbox" 
-                name="checkComplete" 
-                id="checkComplete" 
-                value={todo.isCompleted? 'on' : ''}
-                onClick={() => clickHandler(todo)} />
+                <div className='table-checkbox'>
+                  <input 
+                    type="checkbox" name="checkComplete" className="checkComplete"
+                    checked={todo.isCompleted}
+                    onClick={() => clickHandler(todo)}
+                  />
+                </div>                
               </td>
               <td>
-                <button 
-                type="reset"
-                onClick={() => deleteHandler(todo)}>
-                  <i className="fas fa-trash-alt"></i>
-                </button>
+                <div className='table-button'>
+                  <button 
+                  className='table-btn'
+                  type="reset"
+                  onClick={() => deleteHandler(todo)}>
+                    <i className="fas fa-trash-alt"></i>
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

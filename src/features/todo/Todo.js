@@ -34,25 +34,30 @@ const Todo = () => {
       <form name='addTodoForm' id='addTodoForm' onSubmit={handleAdd}>
         <div>
           <label>Task Name</label>
-          <input type='text' name='taskName'/>
+          <input type='text' name='taskName' required/>
         </div>
         <div>
           <label>Note</label>
           <input type='text' name='note'/>
         </div>
-        <button 
-          type="submit" 
-          className="btn btn-sm btn-danger">
-            Add Todo
-        </button>
+        <div className='add-todo-btn'>
+          <button 
+            type="submit" 
+            className="">
+              Add Todo
+          </button>
+        </div>
       </form>
 
-      <Filter />
-
-      <TodoList 
-        clickHandler={handleClick}
-        deleteHandler={handleDelete}
-      />
+      {(todos.length == 0)? '' : 
+        <div>
+          <Filter />
+          <TodoList 
+            clickHandler={handleClick}
+            deleteHandler={handleDelete}
+          />
+        </div>
+      }
     </div>
   )
 } 
